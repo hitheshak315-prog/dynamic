@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameZone – Gaming Store | Level Up Your Gaming Experience</title>
+  <meta name="description" content="GameZone is a modern online gaming store to discover, explore, and purchase PC and console games at unbeatable prices with instant digital delivery.">
+  
+  <!-- Google Fonts: Outfit & Rajdhani for modern high-tech gaming aesthetics -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      
+      <!-- Logo -->
+      <a href="#home" class="nav-logo" id="brand-logo" onclick="navigateTo('home')">
+        <div class="logo-icon">
+          <!-- Gamepad SVG Icon -->
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="6" y1="12" x2="10" y2="12"></line>
+            <line x1="8" y1="10" x2="8" y2="14"></line>
+            <line x1="15" y1="13" x2="15.01" y2="13"></line>
+            <line x1="18" y1="11" x2="18.01" y2="11"></line>
+            <rect x="2" y="6" width="20" height="12" rx="6"></rect>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">GAME<span class="accent-text">ZONE</span></span>
+          <span class="logo-subtitle">GAMING STORE</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#home" class="nav-link active" data-page="home" onclick="navigateTo('home')">Home</a>
+        <a href="#games" class="nav-link" data-page="games" onclick="navigateTo('games')">Games</a>
+        <a href="#categories" class="nav-link" data-page="categories" onclick="navigateTo('categories')">Categories</a>
+        <a href="#about" class="nav-link" data-page="about" onclick="navigateTo('about')">About Us</a>
+        <a href="#contact" class="nav-link" data-page="contact" onclick="navigateTo('contact')">Contact</a>
+      </nav>
+
+      <!-- Right Utility Actions -->
+      <div class="nav-actions">
+        <!-- User Account / Login button -->
+        <button class="nav-btn user-btn" id="user-auth-btn" title="Account / Login" onclick="openAuthModal()">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span id="user-btn-text">Login</span>
+        </button>
+
+        <!-- Shopping Cart Button with Dynamic Badge -->
+        <button class="nav-btn cart-btn" id="cart-nav-btn" title="View Shopping Cart" onclick="navigateTo('cart')">
+          <div class="cart-icon-wrapper">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="cart-badge" id="nav-cart-badge">0</span>
+          </div>
+          <span class="cart-btn-label">Cart</span>
+        </button>
+
+        <!-- Mobile Hamburger Button -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu" onclick="toggleMobileNav()">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="#home" class="mobile-link active" onclick="navigateTo('home'); toggleMobileNav();">Home</a>
+      <a href="#games" class="mobile-link" onclick="navigateTo('games'); toggleMobileNav();">All Games</a>
+      <a href="#categories" class="mobile-link" onclick="navigateTo('categories'); toggleMobileNav();">Categories</a>
+      <a href="#cart" class="mobile-link" onclick="navigateTo('cart'); toggleMobileNav();">Shopping Cart (<span id="mobile-cart-badge">0</span>)</a>
+      <a href="#about" class="mobile-link" onclick="navigateTo('about'); toggleMobileNav();">About Us</a>
+      <a href="#contact" class="mobile-link" onclick="navigateTo('contact'); toggleMobileNav();">Contact</a>
+      <div class="mobile-auth-wrapper">
+        <button class="btn btn-outline w-100" id="mobile-auth-btn" onclick="openAuthModal(); toggleMobileNav();">
+          Login / Register
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN APP CONTAINER ================= -->
+  <main class="main-content" id="main-content">
+
+    <!-- ================= 1. HOME SECTION ================= -->
+    <section class="page-section active" id="section-home">
+      
+      <!-- Hero Section -->
+      <div class="hero-container">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span> 2026 TOP-RATED TITLES NOW LIVE
+          </div>
+          <h1 class="hero-title">
+            Level Up Your <span class="gradient-text">Gaming Experience</span>
+          </h1>
+          <p class="hero-subtitle">
+            Discover, explore, and purchase the hottest PC and console games. Unbeatable deals, instant digital activation, and unmatched gameplay await you.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary" onclick="navigateTo('games')">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              Shop Now
+            </button>
+            <button class="btn btn-secondary" onclick="navigateTo('categories')">
+              Browse Categories
+            </button>
+          </div>
+
+          <!-- Quick Stats Banner -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Featured Games</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">Instant</span>
+              <span class="stat-label">Key Delivery</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">₹ Best</span>
+              <span class="stat-label">Price Guarantee</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">4.8★</span>
+              <span class="stat-label">Gamer Rating</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Popular Categories Preview Section -->
+      <div class="content-wrapper section-padding">
+        <div class="section-header">
+          <div>
+            <span class="section-tag">GENRES & PLATFORMS</span>
+            <h2 class="section-title">Popular Categories</h2>
+          </div>
+          <button class="btn btn-link" onclick="navigateTo('categories')">
+            View All Categories →
+          </button>
+        </div>
+
+        <div class="home-categories-grid">
+          <div class="category-card" onclick="filterAndNavigateCategory('Action')">
+            <div class="cat-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M14.5 17.5L3 6V3h3l11.5 11.5"></path>
+                <path d="m13 19 6 2 3-3-2-6"></path>
+                <path d="m22 2-7.5 7.5"></path>
+              </svg>
+            </div>
+            <h3>Action</h3>
+            <p>Fast-paced thrillers, shooters & melee combat.</p>
+            <span class="cat-link">Explore Action →</span>
+          </div>
+
+          <div class="category-card" onclick="filterAndNavigateCategory('Racing')">
+            <div class="cat-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+              </svg>
+            </div>
+            <h3>Racing</h3>
+            <p>High-octane city sprints and extreme desert tracks.</p>
+            <span class="cat-link">Explore Racing →</span>
+          </div>
+
+          <div class="category-card" onclick="filterAndNavigateCategory('Adventure')">
+            <div class="cat-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none">
+                <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+              </svg>
+            </div>
+            <h3>Adventure</h3>
+            <p>Engaging storylines, mysterious ruins and quests.</p>
+            <span class="cat-link">Explore Adventure →</span>
+          </div>
+
+          <div class="category-card" onclick="filterAndNavigateCategory('RPG')">
+            <div class="cat-icon-box">
+              <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg>
+            </div>
+            <h3>RPG</h3>
+            <p>Deep character progression, fantasy magic & lore.</p>
+            <span class="cat-link">Explore RPG →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Games Section -->
+      <div class="content-wrapper section-padding bg-alt">
+        <div class="section-header">
+          <div>
+            <span class="section-tag">HANDPICKED FOR YOU</span>
+            <h2 class="section-title">Featured Games</h2>
+          </div>
+          <button class="btn btn-secondary" onclick="navigateTo('games')">
+            Explore All Games →
+          </button>
+        </div>
+
+        <div class="games-grid" id="home-featured-grid">
+          <!-- Dynamically populated by script.js -->
+        </div>
+      </div>
+
+      <!-- Why Choose GameZone (Value Highlights) -->
+      <div class="content-wrapper section-padding">
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Instant Digital Keys</h3>
+            <p>Receive your genuine game activation keys in seconds directly after checkout.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>100% Secure Shopping</h3>
+            <p>Clean demo checkout and robust customer privacy designed with top web standards.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3>Best Rupee Pricing</h3>
+            <p>Regional friendly prices in Indian Rupees (₹) with seasonal student discounts.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎮</div>
+            <h3>Multi-Genre Catalog</h3>
+            <p>From tactical FPS to open-world racing, curated for every gaming enthusiast.</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= 2. ALL GAMES SECTION ================= -->
+    <section class="page-section" id="section-games">
+      <div class="content-wrapper page-header-box">
+        <span class="section-tag">STORE CATALOG</span>
+        <h1 class="page-title">Browse All Games</h1>
+        <p class="page-subtitle">Search, filter, and discover games across action, racing, adventure, sports, RPG, and strategy.</p>
+      </div>
+
+      <div class="content-wrapper">
+        <!-- Interactive Controls Bar -->
+        <div class="catalog-toolbar">
+          
+          <!-- Search Bar -->
+          <div class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="game-search-input" placeholder="Search by game title or keyword..." oninput="handleFilterChange()">
+            <button id="clear-search-btn" class="clear-search" onclick="clearSearch()" title="Clear Search">&times;</button>
+          </div>
+
+          <!-- Filters Row -->
+          <div class="filters-row">
+            
+            <!-- Category Filter Dropdown -->
+            <div class="filter-item">
+              <label for="category-filter-select">Category:</label>
+              <select id="category-filter-select" onchange="handleFilterChange()">
+                <option value="all">All Categories</option>
+                <option value="Action">Action</option>
+                <option value="Racing">Racing</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Sports">Sports</option>
+                <option value="RPG">RPG</option>
+                <option value="Strategy">Strategy</option>
+              </select>
+            </div>
+
+            <!-- Price Filter Dropdown -->
+            <div class="filter-item">
+              <label for="price-filter-select">Price:</label>
+              <select id="price-filter-select" onchange="handleFilterChange()">
+                <option value="all">All Prices</option>
+                <option value="under-1500">Under ₹1,500</option>
+                <option value="1500-2500">₹1,500 – ₹2,500</option>
+                <option value="above-2500">Above ₹2,500</option>
+              </select>
+            </div>
+
+            <!-- Sort Dropdown -->
+            <div class="filter-item">
+              <label for="sort-select">Sort By:</label>
+              <select id="sort-select" onchange="handleFilterChange()">
+                <option value="featured">Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Highest Rated</option>
+                <option value="name-asc">Name: A to Z</option>
+              </select>
+            </div>
+
+            <!-- Reset Button -->
+            <button class="btn btn-secondary btn-sm" onclick="resetFilters()">
+              Reset Filters
+            </button>
+          </div>
+
+          <!-- Quick Category Pills -->
+          <div class="category-pills" id="category-pills">
+            <button class="pill-btn active" data-cat="all" onclick="selectPillCategory('all')">All</button>
+            <button class="pill-btn" data-cat="Action" onclick="selectPillCategory('Action')">Action</button>
+            <button class="pill-btn" data-cat="Racing" onclick="selectPillCategory('Racing')">Racing</button>
+            <button class="pill-btn" data-cat="Adventure" onclick="selectPillCategory('Adventure')">Adventure</button>
+            <button class="pill-btn" data-cat="Sports" onclick="selectPillCategory('Sports')">Sports</button>
+            <button class="pill-btn" data-cat="RPG" onclick="selectPillCategory('RPG')">RPG</button>
+            <button class="pill-btn" data-cat="Strategy" onclick="selectPillCategory('Strategy')">Strategy</button>
+          </div>
+
+          <!-- Results Counter -->
+          <div class="catalog-status">
+            <span id="results-count-text">Showing 10 games</span>
+          </div>
+
+        </div>
+
+        <!-- Dynamic Games Grid -->
+        <div class="games-grid" id="all-games-grid">
+          <!-- Populated dynamically by script.js -->
+        </div>
+
+        <!-- Empty State if no match -->
+        <div class="empty-state hidden" id="games-empty-state">
+          <div class="empty-icon">🎮</div>
+          <h3>No Games Found</h3>
+          <p>We couldn't find any games matching your current search or filters.</p>
+          <button class="btn btn-primary" onclick="resetFilters()">Reset All Filters</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 3. CATEGORIES SECTION ================= -->
+    <section class="page-section" id="section-categories">
+      <div class="content-wrapper page-header-box">
+        <span class="section-tag">CURATED COLLECTIONS</span>
+        <h1 class="page-title">Game Categories</h1>
+        <p class="page-subtitle">Select a category below to instantly filter and browse only the matching titles.</p>
+      </div>
+
+      <div class="content-wrapper">
+        <div class="categories-detailed-grid" id="categories-detailed-grid">
+          <!-- Filled with interactive cards -->
+          
+          <div class="cat-full-card" onclick="filterAndNavigateCategory('Action')">
+            <div class="cat-card-header">
+              <span class="cat-icon-large">⚡</span>
+              <span class="cat-badge">2 Games</span>
+            </div>
+            <h2>Action</h2>
+            <p>Adrenaline-pumping combat, high-stakes tactical gunplay, and intense futuristic battlefield combat.</p>
+            <div class="cat-sample-titles">Sample titles: Cyber Strike, Space Warriors</div>
+            <button class="btn btn-outline w-100">View Action Games →</button>
+          </div>
+
+          <div class="cat-full-card" onclick="filterAndNavigateCategory('Racing')">
+            <div class="cat-card-header">
+              <span class="cat-icon-large">🏎️</span>
+              <span class="cat-badge">3 Games</span>
+            </div>
+            <h2>Racing</h2>
+            <p>Precision driving, nitro-boosted drift corners, rugged desert trails, and scenic coastal road rallies.</p>
+            <div class="cat-sample-titles">Sample titles: Street Racer X, Desert Racing, Speed Horizon</div>
+            <button class="btn btn-outline w-100">View Racing Games →</button>
+          </div>
+
+          <div class="cat-full-card" onclick="filterAndNavigateCategory('Adventure')">
+            <div class="cat-icon-box cat-icon-large">🗺️</div>
+            <span class="cat-badge">2 Games</span>
+            <h2>Adventure</h2>
+            <p>Immersive storytelling, atmospheric stealth infiltration, and mystery puzzle-solving across uncharted realms.</p>
+            <div class="cat-sample-titles">Sample titles: Shadow Quest, Mystery Island</div>
+            <button class="btn btn-outline w-100">View Adventure Games →</button>
+          </div>
+
+          <div class="cat-full-card" onclick="filterAndNavigateCategory('Sports')">
+            <div class="cat-card-header">
+              <span class="cat-icon-large">⚽</span>
+              <span class="cat-badge">1 Game</span>
+            </div>
+            <h2>Sports</h2>
+            <p>Next-generation simulation with authentic team rosters, realistic ball physics, and electric stadium roars.</p>
+            <div class="cat-sample-titles">Sample titles: Football Pro 26</div>
+            <button class="btn btn-outline w-100">View Sports Games →</button>
+          </div>
+
+          <div class="cat-full-card" onclick="filterAndNavigateCategory('RPG')">
+            <div class="cat-card-header">
+              <span class="cat-icon-large">🐉</span>
+              <span class="cat-badge">1 Game</span>
+            </div>
+            <h2>RPG (Role Playing)</h2>
+            <p>Forge your destiny in mythical worlds with deep character progression, ancient incantations, and mighty dragons.</p>
+            <div class="cat-sample-titles">Sample titles: Dragon Legends</div>
+            <button class="btn btn-outline w-100">View RPG Games →</button>
+          </div>
+
+          <div class="cat-full-card" onclick="filterAndNavigateCategory('Strategy')">
+            <div class="cat-card-header">
+              <span class="cat-icon-large">♟️</span>
+              <span class="cat-badge">1 Game</span>
+            </div>
+            <h2>Strategy</h2>
+            <p>Tactical masterminds, competitive arena control, positioning strategy, and champion loadout mastery.</p>
+            <div class="cat-sample-titles">Sample titles: Battle Arena</div>
+            <button class="btn btn-outline w-100">View Strategy Games →</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. GAME DETAILS SECTION ================= -->
+    <section class="page-section" id="section-game-details">
+      <div class="content-wrapper">
+        
+        <!-- Breadcrumb & Back Button -->
+        <div class="details-top-bar">
+          <button class="btn btn-link btn-back" onclick="navigateTo('games')">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Games
+          </button>
+          <div class="breadcrumbs">
+            <a href="#home" onclick="navigateTo('home')">Home</a> / 
+            <a href="#games" onclick="navigateTo('games')">Games</a> / 
+            <span id="detail-breadcrumb-title">Game Title</span>
+          </div>
+        </div>
+
+        <!-- Detail Card Container -->
+        <div class="game-detail-card" id="game-detail-container">
+          <!-- Dynamically populated by script.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 5. SHOPPING CART SECTION ================= -->
+    <section class="page-section" id="section-cart">
+      <div class="content-wrapper page-header-box">
+        <span class="section-tag">ORDER REVIEW</span>
+        <h1 class="page-title">Your Shopping Cart</h1>
+        <p class="page-subtitle">Review your selected games, adjust quantities, and proceed to checkout.</p>
+      </div>
+
+      <div class="content-wrapper">
+        <div class="cart-layout" id="cart-content-wrapper">
+          
+          <!-- Cart Items Left Column -->
+          <div class="cart-items-column">
+            <div class="cart-items-card">
+              <div class="cart-items-header">
+                <h3>Selected Items (<span id="cart-items-count">0</span>)</h3>
+                <button class="btn btn-link btn-sm text-danger" onclick="clearCart()">Clear All</button>
+              </div>
+
+              <!-- List of Cart Items Container -->
+              <div class="cart-items-list" id="cart-items-list">
+                <!-- Dynamically populated by script.js -->
+              </div>
+            </div>
+
+            <div class="cart-actions-row">
+              <button class="btn btn-secondary" onclick="navigateTo('games')">
+                ← Continue Shopping
+              </button>
+            </div>
+          </div>
+
+          <!-- Cart Summary Right Column -->
+          <div class="cart-summary-column">
+            <div class="cart-summary-card">
+              <h3 class="summary-title">Order Summary</h3>
+              
+              <div class="summary-line">
+                <span>Subtotal</span>
+                <span id="cart-subtotal-price">₹0</span>
+              </div>
+              <div class="summary-line">
+                <span>Digital Delivery</span>
+                <span class="text-success">FREE (Instant)</span>
+              </div>
+              <div class="summary-line">
+                <span>Applicable GST / Taxes</span>
+                <span class="text-muted">Included</span>
+              </div>
+
+              <!-- Coupon Code Demo Input -->
+              <div class="coupon-box">
+                <div class="coupon-input-group">
+                  <input type="text" id="coupon-code-input" placeholder="Promo code (e.g. GAMEZONE10)">
+                  <button class="btn btn-secondary btn-sm" onclick="applyPromoCode()">Apply</button>
+                </div>
+                <div class="coupon-message" id="coupon-message"></div>
+              </div>
+
+              <div class="summary-divider"></div>
+
+              <div class="summary-line total-line">
+                <span>Total Amount</span>
+                <span class="total-price" id="cart-total-price">₹0</span>
+              </div>
+
+              <button class="btn btn-primary w-100 btn-large" id="checkout-btn" onclick="proceedToCheckout()">
+                Proceed to Checkout →
+              </button>
+
+              <div class="security-guarantee">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span>Guaranteed 256-bit Secure Demo Checkout</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Empty Cart State -->
+        <div class="empty-state hidden" id="cart-empty-state">
+          <div class="empty-icon">🛒</div>
+          <h3>Your Shopping Cart is Empty</h3>
+          <p>Looks like you haven't added any games to your cart yet. Discover exciting titles from our catalog!</p>
+          <button class="btn btn-primary" onclick="navigateTo('games')">Browse All Games</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 6. CHECKOUT SECTION ================= -->
+    <section class="page-section" id="section-checkout">
+      <div class="content-wrapper page-header-box">
+        <span class="section-tag">FINAL STEP</span>
+        <h1 class="page-title">Complete Checkout</h1>
+        <p class="page-subtitle">Enter your delivery details and choose your preferred demo payment method.</p>
+      </div>
+
+      <div class="content-wrapper">
+        <div class="checkout-layout">
+          
+          <!-- Checkout Form Column -->
+          <div class="checkout-form-column">
+            <div class="form-card">
+              <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)">
+                
+                <h3 class="form-section-title">1. Customer Information</h3>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="checkout-name">Full Name <span class="required">*</span></label>
+                    <input type="text" id="checkout-name" required placeholder="e.g. Navan Kumar">
+                  </div>
+                  <div class="form-group">
+                    <label for="checkout-email">Email Address (For Game Keys) <span class="required">*</span></label>
+                    <input type="email" id="checkout-email" required placeholder="gamer@example.com">
+                  </div>
+                  <div class="form-group">
+                    <label for="checkout-phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="checkout-phone" required placeholder="9876543210" pattern="[0-9]{10}">
+                  </div>
+                  <div class="form-group">
+                    <label for="checkout-city">City / Region <span class="required">*</span></label>
+                    <input type="text" id="checkout-city" required placeholder="e.g. Bangalore, Karnataka">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="checkout-address">Delivery Address / Billing Note <span class="required">*</span></label>
+                  <textarea id="checkout-address" rows="2" required placeholder="Enter full address or notes for digital license dispatch"></textarea>
+                </div>
+
+                <div class="form-divider"></div>
+
+                <h3 class="form-section-title">2. Select Payment Method (Demo)</h3>
+                <p class="payment-notice">
+                  ℹ️ This is a front-end student demonstration. <strong>No real money</strong> or bank credentials are required.
+                </p>
+
+                <div class="payment-options">
+                  <label class="payment-card">
+                    <input type="radio" name="payment-method" value="UPI / QR Code" checked>
+                    <div class="payment-card-inner">
+                      <span class="payment-icon">📱</span>
+                      <div>
+                        <strong>UPI / QR Code</strong>
+                        <p>Google Pay, PhonePe, Paytm (Demo)</p>
+                      </div>
+                    </div>
+                  </label>
+
+                  <label class="payment-card">
+                    <input type="radio" name="payment-method" value="Debit / Credit Card">
+                    <div class="payment-card-inner">
+                      <span class="payment-icon">💳</span>
+                      <div>
+                        <strong>Debit / Credit Card</strong>
+                        <p>Visa, MasterCard, RuPay (Demo)</p>
+                      </div>
+                    </div>
+                  </label>
+
+                  <label class="payment-card">
+                    <input type="radio" name="payment-method" value="Net Banking">
+                    <div class="payment-card-inner">
+                      <span class="payment-icon">🏛️</span>
+                      <div>
+                        <strong>Net Banking</strong>
+                        <p>All Major Indian Banks (Demo)</p>
+                      </div>
+                    </div>
+                  </label>
+
+                  <label class="payment-card">
+                    <input type="radio" name="payment-method" value="Cash on Delivery (Physical Pack)">
+                    <div class="payment-card-inner">
+                      <span class="payment-icon">📦</span>
+                      <div>
+                        <strong>Pay on Delivery</strong>
+                        <p>Physical Game Disc Box (Demo)</p>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+
+                <div class="checkout-actions">
+                  <button type="button" class="btn btn-secondary" onclick="navigateTo('cart')">
+                    ← Back to Cart
+                  </button>
+                  <button type="submit" class="btn btn-primary btn-large" id="place-order-btn">
+                    Place Order (Demo)
+                  </button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+          <!-- Checkout Order Summary Column -->
+          <div class="checkout-summary-column">
+            <div class="cart-summary-card">
+              <h3 class="summary-title">Order Overview</h3>
+              <div class="checkout-items-preview" id="checkout-items-preview">
+                <!-- Populated dynamically -->
+              </div>
+
+              <div class="summary-divider"></div>
+
+              <div class="summary-line">
+                <span>Total Items</span>
+                <span id="checkout-total-items">0</span>
+              </div>
+              <div class="summary-line">
+                <span>Delivery</span>
+                <span class="text-success">Instant Digital Key</span>
+              </div>
+              <div class="summary-line total-line">
+                <span>Total Due</span>
+                <span class="total-price" id="checkout-total-price">₹0</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 7. ABOUT US SECTION ================= -->
+    <section class="page-section" id="section-about">
+      <div class="content-wrapper page-header-box">
+        <span class="section-tag">PROJECT BACKGROUND</span>
+        <h1 class="page-title">About GameZone</h1>
+        <p class="page-subtitle">An online gaming marketplace project crafted with modern web standards.</p>
+      </div>
+
+      <div class="content-wrapper">
+        <div class="about-grid">
+          
+          <div class="about-card main-about">
+            <h2>🎯 Project Overview</h2>
+            <p>
+              <strong>GameZone – Gaming Store</strong> is an academic web application created as an online gaming marketplace project by a <strong>BCA (Bachelor of Computer Applications)</strong> student.
+            </p>
+            <p>
+              The platform enables gamers to seamlessly explore a catalog of video games, view in-depth game specifications, filter by categories and price brackets, manage an interactive shopping cart with <code>localStorage</code> persistence, and complete a simulated demo checkout workflow.
+            </p>
+            <div class="student-badge">
+              <span>🎓 BCA Web Development Project</span>
+              <span>⚡ 100% Vanilla Tech Stack</span>
+            </div>
+          </div>
+
+          <div class="about-card">
+            <h3>⚙️ Technical Architecture</h3>
+            <ul class="about-list">
+              <li><strong>HTML5:</strong> Semantic elements (header, nav, main, section, footer) with accessibility in mind.</li>
+              <li><strong>CSS3:</strong> CSS Custom Properties (variables), Flexbox, CSS Grid layouts, and responsive media queries.</li>
+              <li><strong>Vanilla JavaScript (ES6+):</strong> Array methods (filter, map, reduce, sort), DOM manipulation, Custom Event handling, and client-side routing.</li>
+              <li><strong>localStorage:</strong> Persistent shopping cart state across page reloads and browser sessions.</li>
+            </ul>
+          </div>
+
+          <div class="about-card">
+            <h3>✨ Key Features Implemented</h3>
+            <ul class="about-list">
+              <li>Dynamic game cards rendered directly from structured JavaScript objects.</li>
+              <li>Real-time search bar & multi-category filtering (Action, Racing, Adventure, Sports, RPG, Strategy).</li>
+              <li>Dual price & rating sorting algorithms.</li>
+              <li>Shopping cart with real-time quantity increment/decrement and subtotal calculations.</li>
+              <li>Front-end demo authentication & modal login/registration.</li>
+              <li>Complete simulated checkout flow with unique Order ID receipt generation.</li>
+            </ul>
+          </div>
+
+          <div class="about-card">
+            <h3>🎮 Project Philosophy</h3>
+            <p>
+              Rather than relying on heavy frameworks like React or CSS frameworks like Bootstrap, this project embraces clean, efficient, native web technologies to provide snappy performance, beginner-friendly maintainability, and a modern gaming dark-mode aesthetic.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 8. CONTACT SECTION ================= -->
+    <section class="page-section" id="section-contact">
+      <div class="content-wrapper page-header-box">
+        <span class="section-tag">GET IN TOUCH</span>
+        <h1 class="page-title">Contact GameZone</h1>
+        <p class="page-subtitle">Have questions regarding game keys, compatibility, or student project feedback? Send us a message!</p>
+      </div>
+
+      <div class="content-wrapper">
+        <div class="contact-layout">
+          
+          <!-- Contact Info Cards -->
+          <div class="contact-info-column">
+            <div class="contact-info-card">
+              <div class="info-icon">📍</div>
+              <div>
+                <h4>Location</h4>
+                <p>BCA Computer Science Lab, Tech Campus, India</p>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <div class="info-icon">✉️</div>
+              <div>
+                <h4>Support Email</h4>
+                <p>support@gamezone-store.demo</p>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <div class="info-icon">⏰</div>
+              <div>
+                <h4>Operating Hours</h4>
+                <p>Monday – Saturday: 9:00 AM – 9:00 PM IST</p>
+              </div>
+            </div>
+
+            <div class="contact-info-card">
+              <div class="info-icon">⚡</div>
+              <div>
+                <h4>Instant Activation</h4>
+                <p>Digital game codes delivered 24/7 automatically</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form Card -->
+          <div class="contact-form-column">
+            <div class="form-card">
+              <h3>Send us a Message</h3>
+              <form id="contact-form" onsubmit="handleContactSubmit(event)">
+                
+                <div class="form-group">
+                  <label for="contact-name">Your Name <span class="required">*</span></label>
+                  <input type="text" id="contact-name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-email">Email Address <span class="required">*</span></label>
+                  <input type="email" id="contact-email" required placeholder="Enter your email address">
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-message">Message <span class="required">*</span></label>
+                  <textarea id="contact-message" rows="5" required placeholder="Write your question, game request, or feedback here..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100" id="contact-submit-btn">
+                  Send Message
+                </button>
+
+                <!-- Feedback Message Container -->
+                <div class="contact-alert hidden" id="contact-feedback">
+                  <!-- Filled via JS -->
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer-container">
+      
+      <div class="footer-col brand-col">
+        <div class="footer-logo">
+          <span class="logo-title">GAME<span class="accent-text">ZONE</span></span>
+        </div>
+        <p class="footer-desc">
+          Your premier destination for digital PC and console games. Discover action, racing, adventures, and RPG titles with instant key delivery.
+        </p>
+        <div class="footer-tagline">Level Up Your Gaming Experience.</div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#home" onclick="navigateTo('home')">Home</a></li>
+          <li><a href="#games" onclick="navigateTo('games')">All Games</a></li>
+          <li><a href="#categories" onclick="navigateTo('categories')">Categories</a></li>
+          <li><a href="#cart" onclick="navigateTo('cart')">Shopping Cart</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Game Genres</h4>
+        <ul>
+          <li><a href="#games" onclick="filterAndNavigateCategory('Action')">Action Games</a></li>
+          <li><a href="#games" onclick="filterAndNavigateCategory('Racing')">Racing Simulators</a></li>
+          <li><a href="#games" onclick="filterAndNavigateCategory('Adventure')">Adventure & Quests</a></li>
+          <li><a href="#games" onclick="filterAndNavigateCategory('RPG')">Fantasy RPG</a></li>
+          <li><a href="#games" onclick="filterAndNavigateCategory('Strategy')">Strategy & Arena</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Project Info</h4>
+        <ul>
+          <li><a href="#about" onclick="navigateTo('about')">About GameZone</a></li>
+          <li><a href="#contact" onclick="navigateTo('contact')">Contact Support</a></li>
+          <li><span class="footer-badge">Academic Project</span></li>
+          <li><span class="footer-subtext">BCA Degree Program</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <p>&copy; 2026 GameZone – Gaming Store. All rights reserved. Created for educational and academic demonstration.</p>
+        <p class="footer-currency-note">Prices shown in Indian Rupees (₹). Front-end demo application.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= AUTH MODAL (LOGIN / REGISTER) ================= -->
+  <div class="modal-backdrop hidden" id="auth-modal" onclick="closeAuthModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeAuthModal()">&times;</button>
+      
+      <!-- Tabs -->
+      <div class="modal-tabs">
+        <button class="modal-tab active" id="tab-login" onclick="switchAuthTab('login')">Login</button>
+        <button class="modal-tab" id="tab-register" onclick="switchAuthTab('register')">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form" onsubmit="handleLoginSubmit(event)">
+        <h3>Welcome Back, Gamer!</h3>
+        <p class="modal-sub">Sign in to access your saved library and cart.</p>
+
+        <div class="form-group">
+          <label for="login-email">Email Address</label>
+          <input type="email" id="login-email" required placeholder="gamer@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" required placeholder="••••••••">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Sign In</button>
+        
+        <p class="form-switch-prompt">
+          Don't have an account? <a href="javascript:void(0)" onclick="switchAuthTab('register')">Register now</a>
+        </p>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register-form" class="auth-form hidden" onsubmit="handleRegisterSubmit(event)">
+        <h3>Join GameZone</h3>
+        <p class="modal-sub">Create your free gamer account today.</p>
+
+        <div class="form-group">
+          <label for="reg-name">Full Name</label>
+          <input type="text" id="reg-name" required placeholder="e.g. Navan Kumar">
+        </div>
+
+        <div class="form-group">
+          <label for="reg-email">Email Address</label>
+          <input type="email" id="reg-email" required placeholder="gamer@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="reg-password">Password</label>
+          <input type="password" id="reg-password" required placeholder="Create strong password">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Create Account</button>
+
+        <p class="form-switch-prompt">
+          Already registered? <a href="javascript:void(0)" onclick="switchAuthTab('login')">Sign In</a>
+        </p>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ================= ORDER CONFIRMATION MODAL ================= -->
+  <div class="modal-backdrop hidden" id="order-success-modal">
+    <div class="modal-card receipt-card">
+      <div class="success-icon-wrapper">
+        <svg viewBox="0 0 24 24" width="36" height="36" stroke="currentColor" stroke-width="3" fill="none">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+
+      <h2>Order Placed Successfully!</h2>
+      <p class="receipt-sub">Thank you for your purchase from GameZone.</p>
+
+      <div class="receipt-box" id="order-receipt-details">
+        <!-- Dynamically filled with Order ID, customer name, items, total -->
+      </div>
+
+      <div class="receipt-note">
+        🎮 <strong>Demo License Key:</strong> <code>GZ-DEMO-2026-X89K-W72L</code><br>
+        <span class="text-muted">A confirmation copy has been dispatched to your email address.</span>
+      </div>
+
+      <div class="receipt-actions">
+        <button class="btn btn-primary w-100" onclick="closeOrderModalAndShop()">
+          Continue Browsing Games
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= TOAST NOTIFICATION CONTAINER ================= -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- JavaScript Application Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
